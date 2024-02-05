@@ -129,8 +129,9 @@ table {
 }
 /** end reset css**/
 body {
-  max-width: 1140px;
-  margin: auto;
+  /* deleted properties */
+  /* max-width: 1140px;
+  margin: auto; */
   font-family: "Work Sans";
   font-size: 14px;
 }
@@ -274,7 +275,7 @@ footer nav ul {
   margin-bottom: 51px;
 }
 
-.filters-button {
+button {
   cursor: pointer;
   height: 37px;
   font-family: "Syne";
@@ -356,4 +357,217 @@ a:hover {
 
 .connexion a {
   text-decoration: underline;
+}
+
+/* (3.1) - modal section */
+/* button open modal */
+.mesprojets {
+  display: flex;
+  justify-content: center;
+}
+
+.openModal {
+  display: none;
+  cursor: pointer;
+  padding-top: 7.5px;
+  padding-left: 33px;
+}
+
+.openModal i {
+  padding-right: 8px;
+}
+/* banner section */
+.homecontainer {
+  max-width: 1140px;
+  margin: auto;
+}
+#banner {
+  background-color: black;
+  color: #ffffff;
+  padding-top: 15px;
+  text-align: center;
+  display: none; /* Masquer la bannière par défaut */
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  box-shadow: 0px 0px 5px 0px #000000;
+  height: 30px;
+}
+/* modal area */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  width: 430px;
+  height: 488px;
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 30px;
+  border: 1px solid #888;
+  border-radius: 15px;
+}
+
+.modal-content-1 {
+  display: block;
+}
+
+.modal-content-2 {
+  display: none;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.titlemodal {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 26px;
+  text-align: center;
+}
+
+.trait {
+  height: 1px;
+  width: 70%;
+  background-color: #b3b3b3;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 38px;
+}
+
+#openModal2 {
+  width: 237px;
+}
+/* gallery */
+.imgmodal {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.imgmodal img {
+  width: 100%;
+}
+
+.trash {
+  background-color: black;
+  width: 15px;
+  height: 15px;
+}
+
+.fa-trash-can {
+  color: white;
+  font-size: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.delete-button {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  bottom: 100px;
+  left: 58px;
+}
+
+/* form */
+#imageFile {
+  position: absolute;
+  opacity: 0;
+  width: 102px;
+  padding: 16px;
+  cursor: pointer;
+  transform: translateY(105%);
+  cursor: pointer;
+  font-size: 0px;
+}
+
+.btn-primary {
+  font-family: "Work Sans";
+  border-color: #cbd6dc;
+  color: #306685;
+  background-color: #cbd6dc !important;
+  height: initial;
+}
+
+.rectangle {
+  background-color: #e8f1f6;
+  width: 431px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.rectangle p {
+  color: #444444;
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.fa-image {
+  font-size: 80px;
+  color: #b9c5cc;
+}
+
+.ajoutform {
+  display: flex;
+  flex-direction: column;
+}
+
+#imageTitle,
+#imageCategory {
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#imageCategory {
+  appearance: none;
+  margin-bottom: 40px;
+}
+
+.fa-chevron-down {
+  position: relative;
+  top: 43px;
+  left: 402px;
+  width: 0;
+  color: #6c6c6c;
+}
+
+input[value="Valider"] {
+  background-color: #a7a7a7;
+  border: #a7a7a7;
+  height: 36px;
 }
