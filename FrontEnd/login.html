@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content="" />
+    <script src="login.js" defer></script>
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Login</title>
+  </head>
+  <body class="login">
+    <header>
+      <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+      <nav>
+        <ul>
+          <li>projets</li>
+          <li>contact</li>
+          <li><a href="login.html">login</a></li>
+          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="login-content">
+        <div class="center">
+        <h2>Log In</h2>
+        <form method="post" class="connexion">
+          <div class="email">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="password">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <!-- <div class="incorrect"></div> -->
+          <input type="submit" value="Se connecter" />
+          <a href="#">Mot de passes oublié</a>
+        </form>
+    </div>
+    </main>
+    <footer class="login-footer">
+      <nav>
+        <ul>
+          <li>Mentions Légales</li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
+</html>

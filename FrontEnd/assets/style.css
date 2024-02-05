@@ -297,3 +297,62 @@ button:hover {
   background-color: #1d6154;
   color: white;
 }
+
+/* (2.1) - login link section */
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #b1663c;
+}
+
+/* (2.1) - login page */
+.login {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.login-content {
+  flex: 1;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.center .connexion {
+  margin-top: 37px;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  align-items: center;
+}
+.email,
+.password {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.connexion input {
+  width: 379px;
+  height: 51px;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.connexion input[type="submit"] {
+  height: 36px;
+  width: 179px;
+  margin: 0;
+  padding: 0;
+}
+
+.connexion a {
+  text-decoration: underline;
+}
