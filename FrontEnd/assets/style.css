@@ -271,7 +271,7 @@ footer nav ul {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 51px;
 }
 
 .filters-button {
@@ -321,6 +321,7 @@ a:hover {
 }
 
 .center {
+  margin-top: 150px;
   display: flex;
   align-items: center;
   flex-direction: column;
