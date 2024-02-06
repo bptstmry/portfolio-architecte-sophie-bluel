@@ -282,9 +282,10 @@ async function addWork(imageFile, title, categoryId) {
 
     document.getElementById("imageForm").reset();
     miniatureImage = document.querySelector(".miniatureImage");
-    miniatureImage.src = "";
+    miniatureImage.remove();
     const miniature = document.querySelector(".miniature");
     miniature.style.opacity = "1";
+
   } catch (error) {
     console.error(error);
   }
