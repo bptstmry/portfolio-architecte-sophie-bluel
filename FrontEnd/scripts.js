@@ -213,6 +213,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // (Item created -> login.js)
     document.getElementById("banner").style.display = "block";
     document.getElementById("openModal").style.display = "block";
+    const log = document.querySelector(".log");
+    log.textContent = "logout";
+    log.removeAttribute("href");
+    // Ajouter un gestionnaire d'événements de clic à l'élément log
+    log.addEventListener("click", function() {
+        // Supprimer les données d'authentification ou de session stockées dans localStorage
+        localStorage.clear(); // Supprimer le jeton d'authentification, s'il est stocké
+        location.reload();
+    });
     // hide filter button at login
     document.querySelector(".all").style.display = "none";
     document.querySelector(".objects").style.display = "none";
