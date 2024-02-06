@@ -108,6 +108,8 @@ fetchData();
 
 // ----------------------------------------------------------------
 // (3) - modal section
+// Définir une variable pour suivre l'état de la modal
+
 function setupModal() {
   // get the modal
   const modal = document.getElementById("modal");
@@ -146,6 +148,8 @@ function setupModal() {
   };
   // function to close the modal 2
   span2.onclick = function () {
+    modalOne.style.display = "block";
+    modalTwo.style.display = "none";
     modal.style.display = "none";
   };
 
@@ -153,6 +157,8 @@ function setupModal() {
   window.onclick = function (event) {
     if (event.target === modal) {
       modal.style.display = "none";
+      modalOne.style.display = "block";
+      modalTwo.style.display = "none";
     }
   };
 }
@@ -217,10 +223,10 @@ document.addEventListener("DOMContentLoaded", function () {
     log.textContent = "logout";
     log.removeAttribute("href");
     // Ajouter un gestionnaire d'événements de clic à l'élément log
-    log.addEventListener("click", function() {
-        // Supprimer les données d'authentification ou de session stockées dans localStorage
-        localStorage.clear(); // Supprimer le jeton d'authentification, s'il est stocké
-        location.reload();
+    log.addEventListener("click", function () {
+      // Supprimer les données d'authentification ou de session stockées dans localStorage
+      localStorage.clear(); // Supprimer le jeton d'authentification, s'il est stocké
+      location.reload();
     });
     // hide filter button at login
     document.querySelector(".all").style.display = "none";
@@ -294,7 +300,12 @@ async function addWork(imageFile, title, categoryId) {
     miniatureImage.remove();
     const miniature = document.querySelector(".miniature");
     miniature.style.opacity = "1";
-
+    const modal = document.getElementById("modal");
+    const modalOne = document.querySelector(".modal-content-1");
+    const modalTwo = document.querySelector(".modal-content-2");
+    modal.style.display = "none";
+    modalOne.style.display = "block";
+    modalTwo.style.display = "none";
   } catch (error) {
     console.error(error);
   }
