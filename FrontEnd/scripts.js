@@ -15,6 +15,13 @@ async function fetchData() {
     const data = await r.json();
     console.log(data);
 
+    const dataContainer = document.querySelector(".gallery");
+    const modalGalleries = document.querySelector(".imgmodal");
+
+    // Vider le conteneur d'images existant
+    dataContainer.innerHTML = "";
+    modalGalleries.innerHTML = "";
+
     // - function callback -
     displayModal(data);
     displayData(data);
@@ -161,6 +168,7 @@ async function deleteImage(imageId) {
         accept: "*/*",
       },
     });
+    await fetchData();
     if (!response.ok) {
       throw new Error("Échec de la suppression de l'image");
     }
@@ -215,13 +223,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ----------------------------------------------------------------
 document
+  .getElementById("imageFile")
+  .addEventListener("change", function (event) {
+    const imageFile = event.target.files[0];
+    const title = document.getElementById("imageTitle").value;
+    const categoryId = document.getElementById("imageCategory").value;
+
+    const reader = new FileReader();
+
+    reader.onload = async function (event) {
+      const imageUrl = event.target.result;
+      const miniatureContainer = document.querySelector(".rectangle");
+      const miniature = document.querySelector(".miniature");
+      miniature.style.opacity = "0";
+      const miniatureImage = document.createElement("img");
+      miniatureImage.classList.add("miniatureImage");
+      miniatureImage.src = imageUrl;
+      miniatureContainer.appendChild(miniatureImage);
+    };
+
+    reader.readAsDataURL(imageFile);
+  });
+
+document
   .getElementById("imageForm")
   .addEventListener("submit", async function (event) {
     event.preventDefault();
     const imageFile = document.getElementById("imageFile").files[0];
     const title = document.getElementById("imageTitle").value;
     const categoryId = document.getElementById("imageCategory").value;
-    addWork(imageFile, title, categoryId);
+
+    await addWork(imageFile, title, categoryId);
   });
 
 async function addWork(imageFile, title, categoryId) {
@@ -232,18 +264,28 @@ async function addWork(imageFile, title, categoryId) {
   formData.append("title", title);
   formData.append("category", categoryId);
 
-  await fetch("http://localhost:5678/api/works", {
-    method: "POST",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: formData,
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.error(err));
+  try {
+    const response = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error("Erreur lors de l'envoi de l'image à l'API");
+    }
+
+    await fetchData();
+
+    document.getElementById("imageForm").reset();
+    miniatureImage = document.querySelector(".miniatureImage");
+    miniatureImage.src = "";
+    const miniature = document.querySelector(".miniature");
+    miniature.style.opacity = "1";
+  } catch (error) {
+    console.error(error);
+  }
 }
-
-
-
