@@ -509,7 +509,7 @@ a:hover {
   height: 15px;
 }
 
-.fa-trash-can {
+.modal-content-1 .fa-solid, .fa-trash-can {
   color: white;
   font-size: 9px;
   display: flex;
@@ -646,6 +646,7 @@ input[value="Valider"] {
   border: #a7a7a7;
   height: 36px;
   cursor: pointer;
+  margin-top: 33px;
 }
 input[value="Valider"]:hover {
   background-color: #1d6154;

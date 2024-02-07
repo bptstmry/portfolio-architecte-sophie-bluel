@@ -140,17 +140,32 @@ function setupModal() {
   back.onclick = function () {
     modalTwo.style.display = "none";
     modalOne.style.display = "block";
+    document.getElementById("imageForm").reset();
+    miniatureImage = document.querySelector(".miniatureImage");
+    miniatureImage.remove();
+    const miniature = document.querySelector(".miniature");
+    miniature.style.opacity = "1";
   };
 
   // function to close the modal 1
   span1.onclick = function () {
     modal.style.display = "none";
+    document.getElementById("imageForm").reset();
+    miniatureImage = document.querySelector(".miniatureImage");
+    miniatureImage.remove();
+    const miniature = document.querySelector(".miniature");
+    miniature.style.opacity = "1";
   };
   // function to close the modal 2
   span2.onclick = function () {
     modalOne.style.display = "block";
     modalTwo.style.display = "none";
     modal.style.display = "none";
+    document.getElementById("imageForm").reset();
+    miniatureImage = document.querySelector(".miniatureImage");
+    miniatureImage.remove();
+    const miniature = document.querySelector(".miniature");
+    miniature.style.opacity = "1";
   };
 
   // function to close the modal when clicking outside of it
@@ -159,6 +174,11 @@ function setupModal() {
       modal.style.display = "none";
       modalOne.style.display = "block";
       modalTwo.style.display = "none";
+      document.getElementById("imageForm").reset();
+      miniatureImage = document.querySelector(".miniatureImage");
+      miniatureImage.remove();
+      const miniature = document.querySelector(".miniature");
+      miniature.style.opacity = "1";
     }
   };
 }
