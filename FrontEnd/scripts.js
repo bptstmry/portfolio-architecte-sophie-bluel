@@ -1,4 +1,5 @@
 // ----------------------------------------------------------------
+// ----------------------------------------------------------------
 // (1.1) - function to fetch data from the API
 async function fetchData() {
   try {
@@ -30,6 +31,7 @@ async function fetchData() {
   }
 }
 // ----------------------------------------------------------------
+// ----------------------------------------------------------------
 // (1.1) - function to display the data in the HTML document
 function displayData(data) {
   const dataContainer = document.querySelector(".gallery");
@@ -46,43 +48,33 @@ function displayData(data) {
     dataContainer.appendChild(listItem);
   }
 
-  // (1.2) - set up EventListeners for filter buttons and handle filtered data display
-  const boutonallFiltrer = document.querySelector(".all");
-  boutonallFiltrer.addEventListener("click", function () {
-    const allFiltrees = data.filter(function (data) {
-      return data.categoryId <= 3;
+  // - (1.2) - set up EventListeners for filter buttons and handle filtered data display -
+  function addFilterListener(selector, categoryId) {
+    const boutonFiltrer = document.querySelector(selector);
+    boutonFiltrer.addEventListener("click", function () {
+        let filteredData;
+        if (selector === ".all") {
+            filteredData = data.filter(function (data) {
+                return data.categoryId <= 3;
+            });
+        } else {
+            filteredData = data.filter(function (data) {
+                return data.categoryId === categoryId;
+            });
+        }
+        console.log(filteredData);
+        displayFilteredData(filteredData);
     });
-    console.log(allFiltrees);
-    displayFilteredData(allFiltrees);
-  });
-
-  const boutonobjectsFiltrer = document.querySelector(".objects");
-  boutonobjectsFiltrer.addEventListener("click", function () {
-    const objetsFiltrees = data.filter(function (data) {
-      return data.categoryId == 1;
-    });
-    console.log(objetsFiltrees);
-    displayFilteredData(objetsFiltrees);
-  });
-
-  const boutonaparmentsFiltrer = document.querySelector(".apartments");
-  boutonaparmentsFiltrer.addEventListener("click", function () {
-    const apartmentsFiltrees = data.filter(function (data) {
-      return data.categoryId == 2;
-    });
-    console.log(apartmentsFiltrees);
-    displayFilteredData(apartmentsFiltrees);
-  });
-
-  const boutonhandrFiltrer = document.querySelector(".handr");
-  boutonhandrFiltrer.addEventListener("click", function () {
-    const handrFiltrees = data.filter(function (data) {
-      return data.categoryId == 3;
-    });
-    console.log(handrFiltrees);
-    displayFilteredData(handrFiltrees);
-  });
 }
+
+// Utilisation de la fonction addFilterListener
+addFilterListener(".objects", 1);
+addFilterListener(".apartments", 2);
+addFilterListener(".handr", 3);
+addFilterListener(".all", 3);
+
+}
+
 // ----------------------------------------------------------------
 // (1.2) - function to display filtered data in the HTML document
 function displayFilteredData(filteredData) {
@@ -107,9 +99,8 @@ function displayFilteredData(filteredData) {
 fetchData();
 
 // ----------------------------------------------------------------
+// ----------------------------------------------------------------
 // (3) - modal section
-// Définir une variable pour suivre l'état de la modal
-
 function setupModal() {
   // get the modal
   const modal = document.getElementById("modal");
@@ -190,8 +181,8 @@ async function deleteImage(imageId) {
     console.error("Erreur lors de la suppression de l'image :", error);
   }
 }
-function displayModal(data) {
   // --- create all the images elements and delete button ---
+function displayModal(data) {
   for (let i = 0; i < data.length; i++) {
     const parentImg = document.createElement("figure");
     const img = document.createElement("img");
@@ -245,6 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ----------------------------------------------------------------
+// function to post images via api
 document
   .getElementById("imageFile")
   .addEventListener("change", function (event) {
@@ -315,7 +307,8 @@ async function addWork(imageFile, title, categoryId) {
     console.error(error);
   }
 }
-
+// ----------------------------------------------------------------
+// function to reset miniature img form
 function resetMiniature() {
   const miniatureImage = document.querySelector(".miniatureImage");
       miniatureImage.remove();
