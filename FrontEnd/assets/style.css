@@ -333,7 +333,7 @@ a:hover {
   flex: 1;
 }
 
-.login-link {
+.login-link, .projects{
   font-weight: bold;
 }
 
@@ -392,7 +392,7 @@ a:hover {
 }
 
 .mesprojets h2 {
-  margin-left: 109px;
+  /* margin-left: 109px; */
 }
 .openModal {
   display: none;
@@ -510,7 +510,8 @@ a:hover {
   height: 15px;
 }
 
-.modal-content-1 .fa-solid, .fa-trash-can {
+.modal-content-1 .fa-solid,
+.fa-trash-can {
   color: white;
   font-size: 9px;
   display: flex;
@@ -530,7 +531,7 @@ a:hover {
 /* form */
 
 .modal-content-2 .titlemodal {
-  margin-top: -75px
+  margin-top: -75px;
 }
 
 .modal-content-2 .close {
@@ -542,7 +543,14 @@ a:hover {
   top: -63px;
   left: -58px;
   font-size: 24px;
+}
+
+.fa-arrow-left {
   cursor: pointer;
+  color: #aaa;
+}
+.fa-arrow-left:hover {
+  color: black;
 }
 #imageFile {
   position: relative;

@@ -221,10 +221,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const log = document.querySelector(".log");
     log.textContent = "logout";
     log.removeAttribute("href");
-    // Ajouter un gestionnaire d'événements de clic à l'élément log
     log.addEventListener("click", function () {
-      // Supprimer les données d'authentification ou de session stockées dans localStorage
-      localStorage.clear(); // Supprimer le jeton d'authentification, s'il est stocké
+      localStorage.clear();
       location.reload();
     });
     // hide filter button at login
