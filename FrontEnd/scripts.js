@@ -49,25 +49,59 @@ function displayData(data) {
   }
 
   // - (1.2) - set up EventListeners for filter buttons and handle filtered data display -
+  
   function addFilterListener(selector, categoryId) {
     const boutonFiltrer = document.querySelector(selector);
-    boutonFiltrer.addEventListener("click", function () {
+    
+    function applyFilter() {
+        let allButtons = document.querySelectorAll(".filters-button");
+        
+        allButtons.forEach(function(button) {
+            button.style.backgroundColor = '';
+            button.style.color = '';
+        });
+        
         let filteredData;
-        if (selector === ".all") {
-            filteredData = data.filter(function (data) {
-                return data.categoryId <= 3;
-            });
-        } else {
-            filteredData = data.filter(function (data) {
-                return data.categoryId === categoryId;
-            });
+
+        switch (selector) {
+            case ".all":
+                filteredData = data.filter(function (data) {
+                    return data.categoryId <= 3;
+                });
+                break;
+            case ".objects":
+                filteredData = data.filter(function (data) {
+                    return data.categoryId == 1;
+                });
+                break;
+            case ".apartments":
+                filteredData = data.filter(function (data) {
+                    return data.categoryId == 2;
+                });
+                break;
+            case ".handr":
+                filteredData = data.filter(function (data) {
+                    return data.categoryId == 3;
+                });
+                break;
         }
+
         console.log(filteredData);
         displayFilteredData(filteredData);
+
+        boutonFiltrer.style.backgroundColor = '#0e2f28';
+        boutonFiltrer.style.color = 'white';
+    }
+
+    if (selector === ".all") {
+        applyFilter();
+    }
+
+    boutonFiltrer.addEventListener("click", function () {
+        applyFilter();
     });
 }
 
-// Utilisation de la fonction addFilterListener
 addFilterListener(".objects", 1);
 addFilterListener(".apartments", 2);
 addFilterListener(".handr", 3);
@@ -276,7 +310,7 @@ async function addWork(imageFile, title, categoryId) {
   formData.append("image", imageFile);
   formData.append("title", title);
   formData.append("category", categoryId);
-
+  console.log(formData)
   try {
     const response = await fetch("http://localhost:5678/api/works", {
       method: "POST",

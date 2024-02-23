@@ -523,9 +523,14 @@ a:hover {
 .delete-button {
   cursor: pointer;
   display: inline-block;
-  position: relative;
-  bottom: 95px;
+  position: absolute;
+  z-index: 1;
   left: 52px;
+  top: 4px;
+}
+
+.imgmodal figure {
+  position: relative;
 }
 
 /* form */
